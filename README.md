@@ -3,7 +3,7 @@
 </br>
 </br>
 
-<strong>Libft - My First C Library 📚</strong>
+<strong>## Libft - My First C Library 📚</strong>
 
 <p>This is my very first C library project, where I implemented a series of essential functions from scratch! Through this project, I gained valuable insights into memory management, safety, and the inner workings of C programming 🛠️</p>
 
