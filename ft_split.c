@@ -6,11 +6,12 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:43:20 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:43:23 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 14:48:07 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	ft_strlen(char const *s);
 
@@ -21,13 +22,29 @@ static int	ft_countwords(char const *s, char c)
 
 	j = 0;
 	i = 0;
+	if (s[0] != '\0' && s[0] != c)
+		j++;
 	while (s[i])
 	{
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-			j += 1;
+				j += 1;
 		i++;
 	}
 	return (j);
+}
+
+static	void	*ft_freer(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free (tab);
+	return (NULL);
 }
 
 static char	*ft_wordprinter(char const *s, char c)
@@ -36,11 +53,13 @@ static char	*ft_wordprinter(char const *s, char c)
 	char	*tab;
 
 	i = 0;
-	while (s[i + 1] != c && s[i + 1])
+	while (s[i] != c && s[i])
 		i++;
 	tab = malloc((i + 1) * sizeof(char));
 	if (!tab)
 		return (NULL);
+	tab[i] = '\0';
+	i--;
 	while (i >= 0 && s[i])
 	{
 		tab[i] = s[i];
@@ -54,40 +73,43 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 	int		i;
 	int		j;
-	int		f;
 
-	i = 0;
 	j = 0;
-	f = ft_strlen(s);
-	tab = malloc((f + 1) * sizeof(char *));
+	i = ft_strlen(s);
+	tab = malloc((ft_countwords(s, c) + 1) * sizeof(char *));
 	if (!tab)
 		return (NULL);
-	f = ft_countwords(s, c);
-	while (j <= f)
+	i = 0;
+	while (j < ft_countwords(s, c))
 	{
-		while (s[i] == c && s[i])
+		while (s[i] && s[i] == c)
 			i++;
 		tab[j] = ft_wordprinter(&s[i], c);
+		if (!tab[j])
+			ft_freer(tab);
 		j++;
-		while (s[i] != c && s[i])
+		while (s[i] && s[i] != c)
 			i++;
 	}
 	tab[j] = NULL;
-	return(tab);
+	j = 0;
+	return (tab);
 }
 /*
 int	main(void)
 {
-	char	str[50]= "    Asdsa123 2 dsad   D A DA a  , ";
-	char	sep= ' ';
-	ft_split(str, sep);
+	char	str[100]= " hel lo! ";
+	char	sep = ' ';
+	
+	char **tab = ft_split(str, sep);
+	free(tab);
 	return (0);
-}
-	j = 0;
+}*/
+/*	j = 0;
 	while (tab[j])
 	{
 		printf("\n%s", tab[j]);
 		j++;
 	}
 	return (tab);
-*/
+}*/

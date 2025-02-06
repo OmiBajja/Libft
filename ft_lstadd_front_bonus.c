@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 18:31:57 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/18 17:32:21 by obajja           ###   ########.fr       */
+/*   Created: 2024/11/19 19:41:01 by obajja            #+#    #+#             */
+/*   Updated: 2024/11/20 12:30:30 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int str)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!(str >= 'A' && str <= 'Z') && !(str >= 'a' && str <= 'z'))
-		return (0);
-	return (1);
+	new->next = *lst;
+	*lst = new;
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char s = 'F';
-
-	printf("%d", ft_isalpha(s));
-	return (0);
-}*/

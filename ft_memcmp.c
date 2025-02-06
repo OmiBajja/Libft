@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 18:44:33 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/19 16:53:04 by obajja           ###   ########.fr       */
+/*   Created: 2024/11/07 16:27:10 by obajja            #+#    #+#             */
+/*   Updated: 2024/11/18 21:41:08 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, int n)
+int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)
 {
-	int	i;
+	size_t	i;
+	char	*src1;
+	char	*src2;
 
+	src1 = (char *)ptr1;
+	src2 = (char *)ptr2;
 	i = 0;
-	if (n <= 0)
-		return (n);
-	while (str1[i] && str2[i] && str1[i] == str2[i] && i < n - 1)
+	if (size == 0)
+		return (size);
+	while (src1[i] == src2[i] && i < size - 1)
 	{
 		i++;
 	}
-	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	return ((unsigned char)src1[i] - (unsigned char)src2[i]);
 }
 /*
-#include <stdio.h>
 #include <string.h>
-
-int main (void)
+#include <stdio.h>
+int main()
 {
-  char* s1 = "test\200";
-  char* s2 = "test\0dasdasd";
-  int n = 6;
+  char s1[50] = "DinosNyoom";
+  char s2[50] = "DisnoNyoom";
+  printf("%d",ft_memcmp(s1,s2,15));
+  printf("\n%d",memcmp(s1,s2,15));
 
-  printf("%d",ft_strncmp(s1,s2,n));
-  printf("\n%d",strncmp(s1,s2,n));
-  return (0);
+  return 0;
 }*/

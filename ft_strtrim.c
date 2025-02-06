@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:44:50 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:44:51 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 18:28:10 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	ft_starter(char const *str, char const *set, int *start, int *end)
 	int	i;
 
 	i = 0;
-	if (ft_setchecker(str[i], set))
+	if (str[i] && ft_setchecker(str[i], set))
 	{
-		while (ft_setchecker(str[i], set))
+		while (str[i] && ft_setchecker(str[i], set))
 			i++;
 	}
 	*start = i;
@@ -41,7 +41,7 @@ static void	ft_starter(char const *str, char const *set, int *start, int *end)
 		i++;
 	if (ft_setchecker(str[i - 1], set))
 	{
-		while (ft_setchecker(str[i - 1], set))
+		while (i > 0 && ft_setchecker(str[i - 1], set))
 			i--;
 	}
 	*end = i;
@@ -49,17 +49,21 @@ static void	ft_starter(char const *str, char const *set, int *start, int *end)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		start;
-	int		end;
-	char	*str;
-	int		i;
+	int				start;
+	int				end;
+	unsigned int	test;
+	char			*str;
+	int				i;
 
 	i = 0;
 	ft_starter(s1, set, &start, &end);
-	str = malloc((end - start + 1) * sizeof(char));
+	test = end - start;
+	if (end < start)
+		test = 0;
+	str = malloc((test + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	while (i < end - start)
+	while (i < end - start && test != 0)
 	{
 		str[i] = s1[start + i];
 		i++;
@@ -72,9 +76,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 int	main(void)
 {
-	char	str[50]= " ,  . A Dinosaurs .  ";
-	char	set[13]= " .,";
+	//char	str[50]= " ,  .                    .  ";
+	//char	set[13]= " .,";
 
-	printf("%s", ft_strtrim(str, set));
+	printf("%s", ft_strtrim("   xxx   xxx", " x"));
 	return (0);
 }*/

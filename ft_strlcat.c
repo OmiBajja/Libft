@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:44:07 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:44:09 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 16:55:28 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strlen(const char *str);
 
-size_t	ft_strlcat(char *dst, char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -26,27 +26,35 @@ size_t	ft_strlcat(char *dst, char *src, size_t size)
 	if (size <= i)
 		return (size + r);
 	r += i;
-	while (i + j + 1 < size && src[j])
+	while (j < (size - i - 1) && src[j])
 	{
-		dst[i] = src[j];
-		i++;
+		dst[i + j] = src[j];
 		j++;
 	}
-	dst[i] = '\0';
+	dst[i + j] = '\0';
 	return (r);
 }
 /*
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
+
 int	main(void)
 {
-	char	s1[50] = "Dino";
-	char	s2[16] = "Nyoom";
-	char	s3[50] = "Dino";
-	char	s4[16] = "Nyoom";
+	char	*dest;
+	//char	s2[16] = "lorem";
+	//char	dest2[1] = "a";
+	//char	s4[16] = "lorem";
+	if (!(dest = (char *)malloc(sizeof(*dest) * 15)))
+          return (0);
+    memset(dest, 0, 15);
+    memset(dest, 'r', 6);
 
-	printf("%ld", ft_strlcat(s1, s2, 6));
-	printf("\n%ld", strlcat(s3, s4, 6));
-  printf("\n");
+	dest[11] = 'a';
+	ft_strlcat(dest, "lorem ipsum", 15);
+
+	//printf("%ld", ft_strlcat(s1, "", 15));
+	//printf("\n%ld", strlcat(s3, "", 15));
+	printf("\nTest:%s",dest);
+	//printf("\nVrai:%s",s3);
 	return (0);
 }*/

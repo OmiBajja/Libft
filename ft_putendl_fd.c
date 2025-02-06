@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:32:42 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:32:43 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 01:03:30 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_putendl_fd(char *s, int fd)
 	while (s[i])
 	{
 		ft_putchar_fd(s[i], fd);
-		ft_putchar_fd(nl, fd);
 		i++;
 	}
+	ft_putchar_fd(nl, fd);
 }
 /*
 #include <fcntl.h>

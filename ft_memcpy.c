@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:32:22 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:32:23 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 11:03:12 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	char			*dest_cpy;
 	const char		*src_cpy;
 
+	if ((dest == 0 && src == 0) || (size == 0))
+		return (dest);
 	dest_cpy = (char *)dest;
 	src_cpy = (const char *)src;
 	i = 0;
@@ -34,14 +36,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 
 int	main(void)
 {
-  char* src = "DinosAAZEAEZAEAZaurs";
-  char dest[50];
-  char dest2[50];
+  //char* src = (void*)0;
+  //char dest[50];
+  //char dest2[50];
 
-  ft_memcpy(dest,src,20);
-  memcpy(dest2,src,20);
-  printf("%s",dest);
-  printf("\n%s",dest2);
-  printf("\n");
+  ft_memcpy((void*)0,(void*)0,3);
+  memcpy((void*)0,(void*)0,3);
+  //printf("%s",dest);
+  //printf("\n%s",dest2);
+  //printf("\n");
   return (0);
 }*/

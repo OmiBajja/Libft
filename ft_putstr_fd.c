@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:43:08 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:43:09 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:44:08 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
-
+/*
 #include <fcntl.h>
 int	main(void)
 {
@@ -35,4 +35,4 @@ int	main(void)
 		return (1);
 	ft_putstr_fd(c, fd);
 	return (0);
-}
+}*/

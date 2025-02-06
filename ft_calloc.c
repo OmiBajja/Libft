@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:31:45 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 19:04:22 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 19:03:13 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	*ft_calloc(size_t elementCount, size_t elementSize)
 {
 	void	*src;
-	size_t		i;
+	size_t	i;
 
 	i = 0;
+	if (elementSize != 0 && elementCount > SIZE_MAX / elementSize)
+		return (NULL);
 	src = malloc(elementCount * elementSize);
 	if (!src)
 		return (NULL);

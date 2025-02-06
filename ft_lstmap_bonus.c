@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 18:43:41 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/19 11:08:10 by obajja           ###   ########.fr       */
+/*   Created: 2024/11/19 21:58:56 by obajja            #+#    #+#             */
+/*   Updated: 2024/11/20 12:54:28 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *src);
-
-char	*ft_strdup(const char *src)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		i;
-	char	*cpy;
+	t_list	*new;
+	t_list	*temp;
+	t_list	*dino;
 
-	i = 0;
-	cpy = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!cpy)
+	if (!lst)
 		return (NULL);
-	while (src[i])
+	new = ft_lstnew(f(lst->content));
+	if (!new)
+		return (NULL);
+	dino = new;
+	lst = lst->next;
+	while (lst != NULL)
 	{
-		cpy[i] = src[i];
-		i++;
+		temp = ft_lstnew(f(lst->content));
+		if (!temp)
+		{
+			ft_lstclear(&new, *del);
+			return (NULL);
+		}
+		dino->next = temp;
+		dino = temp;
+		lst = lst->next;
 	}
-	cpy[i] = '\0';
-	return (cpy);
+	return (new);
 }
-/*
-#include <string.h>
-int	main(void)
-{
-	char	s1[50]= "Dinosaurs Nyoo02m";
-	printf("%s", ft_strdup(s1));
-  printf("\n%s", strdup(s1));
-  printf("\n");
-	return (0);
-}*/

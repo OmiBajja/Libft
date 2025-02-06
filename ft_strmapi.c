@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:44:25 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:44:26 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:42:07 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static char f (unsigned int i, char s)
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char * str;
-	int	i;
+	char	*str;
+	int		i;
 
 	str = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!str)

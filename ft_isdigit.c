@@ -6,23 +6,16 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:32:08 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:32:09 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/18 17:36:49 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(char *str)
+int	ft_isdigit(int str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
+	if (!(str >= '0' && str <= '9'))
+		return (0);
 	return (1);
 }
 /*
@@ -30,8 +23,8 @@ int	ft_isdigit(char *str)
 
 int	main(void)
 {
-    char *s = "0973";
+	char *s = "0973";
 
-    printf("%d",ft_isdigit(s));
-    return(0);
+	printf("%d",ft_isdigit(s));
+	return(0);
 }*/

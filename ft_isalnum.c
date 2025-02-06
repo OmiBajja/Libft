@@ -6,32 +6,26 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:31:51 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:31:51 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/18 17:38:00 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(char *str)
+int	ft_isalnum(int str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= 'A' && str[i] <= 'Z') && !(str[i] >= 'a'
-				&& str[i] <= 'z') && !(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
+	if (!(str >= 'A' && str <= 'Z') && !(str >= 'a' && str <= 'z')
+		&& !(str >= '0' && str <= '9'))
+		return (0);
 	return (1);
 }
 /*
 #include <stdio.h>
+
 int	main(void)
 {
-    char *s = "Din356osa0urs";
+	char *s = "Din356osa0urs";
 
-    printf("%d",ft_isalnum(s));
-    return(0);
+	printf("%d",ft_isalnum(s));
+	return(0);
 }*/

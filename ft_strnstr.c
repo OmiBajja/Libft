@@ -6,21 +6,25 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:44:39 by obajja            #+#    #+#             */
-/*   Updated: 2024/11/14 18:44:40 by obajja           ###   ########.fr       */
+/*   Updated: 2024/11/19 17:08:53 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(char *str, char *tofind, int n)
+int	ft_strlen(const char *str);
+
+char	*ft_strnstr(const char *str, const char *tofind, int n)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
+	if (n < 0)
+		n = ft_strlen(str);
 	if (tofind[j] == '\0')
-		return (str);
+		return ((char *)str);
 	while (str[i] && i < n)
 	{
 		j = 0;
@@ -28,7 +32,7 @@ char	*ft_strnstr(char *str, char *tofind, int n)
 		{
 			j++;
 			if (tofind[j] == '\0')
-				return (&str[i]);
+				return ((char *)&str[i]);
 		}
 		i++;
 	}
